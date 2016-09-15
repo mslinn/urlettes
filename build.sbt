@@ -1,16 +1,20 @@
-organization := "com.micronautics"
+import sbt.Keys._
+
+licenses += ("MIT", url("https://opensource.org/licenses/Apache-2.0"))
 
 name := "urlettes"
+
+organization := "com.micronautics"
 
 version := "0.1.0"
 
 scalaVersion := "2.11.8"
 
 scalacOptions ++= Seq(
-  "-deprecation", 
-  "-encoding", "UTF-8", 
-  "-feature", 
-  "-target:jvm-1.8", 
+  "-deprecation",
+  "-encoding", "UTF-8",
+  "-feature",
+  "-target:jvm-1.8",
   "-unchecked",
   "-Ywarn-adapted-args",
   "-Ywarn-dead-code",
@@ -29,20 +33,25 @@ scalacOptions in (Compile, doc) <++= baseDirectory.map {
 }
 
 javacOptions ++= Seq(
-  "-Xlint:deprecation", 
-  "-Xlint:unchecked", 
-  "-source", "1.8", 
-  "-target", "1.8", 
+  "-Xlint:deprecation",
+  "-Xlint:unchecked",
+  "-source", "1.8",
+  "-target", "1.8",
   "-g:vars"
 )
 
 resolvers ++= Seq(
-  "Lightbend Releases" at "http://repo.typesafe.com/typesafe/releases"
+  "Lightbend Releases" at "http://repo.typesafe.com/typesafe/releases",
+  "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
 )
 
 libraryDependencies ++= Seq(
-  "org.scalatest"     %% "scalatest"   % "2.2.6" % "test" withSources(),
-  "junit"             %  "junit"       % "4.12"  % "test"
+  "com.typesafe.play"  %% "play-json"   % "2.5.7" % Test withSources(),
+  "com.typesafe.play"  %% "play-json"   % "2.5.7" % Provided,
+  "com.typesafe.slick" %% "slick"       % "3.1.1" % Test withSources(),
+  "com.typesafe.slick" %% "slick"       % "3.1.1" % Provided,
+  "org.scalatest"      %% "scalatest"   % "2.2.6" % Test withSources(),
+  "junit"              %  "junit"       % "4.12"  % Test
 )
 
 logLevel := Level.Warn
@@ -60,5 +69,7 @@ initialCommands in console := """
 
 cancelable := true
 
-sublimeTransitive := true
+bintrayOrganization := Some("micronautics")
+bintrayRepository := "play"
 
+publishArtifact in Test := false
