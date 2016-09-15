@@ -1,0 +1,19 @@
+package com.micronautics.playTypes
+
+import com.micronautics.playTypes.{RichURL, URLPath, UrlOrPath}
+
+// FIXME don't know how to do this without hardcoding to a specific database, such as Postgres
+trait PlayTypeSlickMappers {
+  import driver.api._
+  implicit val urlOrPathTypeMapper = MappedColumnType.base[UrlOrPath, String](
+    urlOrPath => urlOrPath.value match {
+      case Left(url) => url.toString
+      case Right(urlPath) => urlPath.value
+    },
+    string    => UrlOrPath(
+      RichURL.unapply(string)
+        .map(richUrl => Left(richUrl.value))
+        .getOrElse(Right(URLPath(string)))
+    )
+  )
+}

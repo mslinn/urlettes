@@ -1,8 +1,12 @@
 # URLEttes
 
-Types for Play Framework, hopefully included in 2.6+
+Types for Play Framework, hopefully included in Play Framework 2.6+.
 
-
+Included:
+* Types: `RichURL`, `URLPath` and `UrlOrPath`
+* Implicit form mappers: `url`, `urlPath`
+* JSON type mappers: for `URL`, `URLPath` and `UrlOrPath`
+* Slick type mappers for `URL` and `URLPath`
 
 ## Installing ##
 
@@ -10,7 +14,7 @@ Add two lines to `build.sbt`.
 
  * Add the `urlettes` dependency:
 ````
-"com.micronautics" %% "urlettes" % "0.1.0" withSources()
+"com.micronautics" %% "urlettes" % "0.1.1" withSources()
 ````
 
  * Add this to the `resolvers`:

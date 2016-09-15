@@ -3,7 +3,8 @@ package com.micronautics.playTypes
 import java.net.URL
 import play.api.libs.json.{Format, JsError, JsResult, JsString, JsSuccess, JsValue, Reads, Writes}
 
-trait PlayTypeImplicits {
+/** Play JSON type mappers */
+trait PlayTypeJsonFormats {
   val readsUrl: Reads[URL] = new Reads[URL] {
     override def reads(json: JsValue): JsResult[URL] = try {
       JsSuccess(new URL(json.as[String]))
@@ -43,4 +44,4 @@ trait PlayTypeImplicits {
   implicit val formatUrlPath = Format(readsUrlPath, writesUrlPath)
 }
 
-object PlayTypeImplicits extends PlayTypeImplicits
+object PlayTypeJsonFormats extends PlayTypeJsonFormats

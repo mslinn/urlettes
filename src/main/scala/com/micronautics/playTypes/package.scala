@@ -2,7 +2,7 @@ package com.micronautics
 
 import java.net.URL
 
-package object playTypes extends PlayTypeImplicits {
+package object playTypes extends PlayTypeJsonFormats {
   implicit class RichURL(val value: URL) extends AnyVal with slick.lifted.MappedTo[URL] {
     def appendPath(appendedPath: String): URL =
       new URL(value.getProtocol, value.getHost, value.getPort, value.getPath + appendedPath)

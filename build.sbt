@@ -6,7 +6,7 @@ name := "urlettes"
 
 organization := "com.micronautics"
 
-version := "0.1.0"
+version := "0.1.1"
 
 scalaVersion := "2.11.8"
 
@@ -46,6 +46,8 @@ resolvers ++= Seq(
 )
 
 libraryDependencies ++= Seq(
+  "com.typesafe.play"  %% "play"        % "2.5.7" % Test withSources(),
+  "com.typesafe.play"  %% "play"        % "2.5.7" % Provided,
   "com.typesafe.play"  %% "play-json"   % "2.5.7" % Test withSources(),
   "com.typesafe.play"  %% "play-json"   % "2.5.7" % Provided,
   "com.typesafe.slick" %% "slick"       % "3.1.1" % Test withSources(),
