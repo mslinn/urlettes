@@ -8,6 +8,8 @@ Included:
 * JSON type mappers: for `URL`, `URLPath` and `UrlOrPath`
 * Slick type mappers for `URL` and `URLPath`
 
+[Here is why you should care about strong typing.](http://pchiusano.github.io/2016-09-15/static-vs-dynamic.html)
+
 ## Installing ##
 
 Add two lines to `build.sbt`.
