@@ -6,9 +6,10 @@ name := "urlettes"
 
 organization := "com.micronautics"
 
-version := "0.1.1"
+version := "0.1.2"
 
 scalaVersion := "2.11.8"
+//crossScalaVersions := Seq("2.11.8", "2.12.0")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -45,16 +46,19 @@ resolvers ++= Seq(
   "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
 )
 
-libraryDependencies ++= Seq(
-  "com.typesafe.play"  %% "play"        % "2.5.7" % Test withSources(),
-  "com.typesafe.play"  %% "play"        % "2.5.7" % Provided,
-  "com.typesafe.play"  %% "play-json"   % "2.5.7" % Test withSources(),
-  "com.typesafe.play"  %% "play-json"   % "2.5.7" % Provided,
-  "com.typesafe.slick" %% "slick"       % "3.1.1" % Test withSources(),
-  "com.typesafe.slick" %% "slick"       % "3.1.1" % Provided,
-  "org.scalatest"      %% "scalatest"   % "2.2.6" % Test withSources(),
-  "junit"              %  "junit"       % "4.12"  % Test
-)
+libraryDependencies ++= {
+  val playVer = "2.5.9"
+  Seq(
+    "com.typesafe.play"  %% "play"        % playVer % Test withSources(),
+    "com.typesafe.play"  %% "play"        % playVer % Provided,
+    "com.typesafe.play"  %% "play-json"   % playVer % Test withSources(),
+    "com.typesafe.play"  %% "play-json"   % playVer % Provided,
+    "com.typesafe.slick" %% "slick"       % "3.1.1" % Test withSources(),
+    "com.typesafe.slick" %% "slick"       % "3.1.1" % Provided,
+    "org.scalatest"      %% "scalatest"   % "2.2.6" % Test withSources(),
+    "junit"              %  "junit"       % "4.12"  % Test
+  )
+}
 
 logLevel := Level.Warn
 
