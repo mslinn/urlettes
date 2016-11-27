@@ -9,6 +9,14 @@ package object playTypes extends PlayTypeJsonFormats {
     def appendPath(appendedPath: String): URL =
       new URL(value.getProtocol, value.getHost, value.getPort, prefixSlash(value.getPath.trim) + appendedPath)
 
+    def exists: Boolean = try {
+      io.Source.fromURL(value)
+      true
+    } catch {
+      case e: Exception =>
+        false
+    }
+
     def isEmpty: Boolean = value.toString.trim.isEmpty
 
     def nonEmpty: Boolean = value.toString.trim.nonEmpty

@@ -16,7 +16,7 @@ Add two lines to `build.sbt`.
 
  * Add the `urlettes` dependency:
 ````
-"com.micronautics" %% "urlettes" % "0.1.3" withSources()
+"com.micronautics" %% "urlettes" % "0.1.4" withSources()
 ````
 
  * Add this to the `resolvers`:
