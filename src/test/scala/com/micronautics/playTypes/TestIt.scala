@@ -14,7 +14,7 @@ package com.micronautics.playTypes
 import java.net.URL
 import org.scalatest.{MustMatchers, WordSpec}
 
-class TestyMcTest extends WordSpec with MustMatchers {
+class TestIt extends WordSpec with MustMatchers {
   "URLs" must {
     "behave" in {
       val url = new URL("http", "localhost", 80, "")

@@ -1,6 +1,8 @@
 # URLEttes
 
-Types for Play Framework, hopefully included in Play Framework 2.6+.
+[![Build Status](https://travis-ci.org/mslinn/urlettes.svg?branch=master)](https://travis-ci.org/mslinn/urlettes)
+
+Types for Play Framework.
 
 Included:
 * Types: `RichURL`, `URLPath` and `UrlOrPath`
@@ -16,7 +18,7 @@ Add two lines to `build.sbt`.
 
  * Add the `urlettes` dependency:
 ````
-"com.micronautics" %% "urlettes" % "0.1.4" withSources()
+"com.micronautics" %% "urlettes" % "0.1.5" withSources()
 ````
 
  * Add this to the `resolvers`:
@@ -24,7 +26,7 @@ Add two lines to `build.sbt`.
 "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
 ````
 
-This library has been built against Scala 2.11.8 / Play 2.5.9.
+This library has been built against Scala 2.11.8 / Play 2.5.12 and Scala 2.12.1 / Play 2.6.0-M1.
 
 ## Thanks To
 
