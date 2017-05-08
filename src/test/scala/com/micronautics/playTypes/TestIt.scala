@@ -27,17 +27,17 @@ class TestIt extends WordSpec with MustMatchers {
   }
 
   "UrlOrPath" must {
-    val urlStr = new URL("http://asdf.com/blah")
-    val path = "/asfd/qwer"
+    val urlStr = new URL("https://cdn.jsdelivr.net/")
+    val path = "/webjars/jquery/2.2.4/jquery.min.js"
 
     "work" in {
       val actual = UrlOrPath(urlStr)
-      actual === Left("http://asdf.com/blah")
+      actual === Left("https://cdn.jsdelivr.net/blah")
       ()
     }
     "append properly" in {
       val actual = UrlOrPath(urlStr.appendPath(path))
-      actual === Left("http://asdf.com/blah/asfd/qwer")
+      actual === Left("https://cdn.jsdelivr.net/webjars/jquery/2.2.4/jquery.min.js")
       ()
     }
   }

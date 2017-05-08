@@ -44,7 +44,11 @@ case class URLPath(value: String) extends AnyVal with MappedTo[String] {
 }
 
 object UrlOrPath {
-  def apply(url: URL): UrlOrPath = new UrlOrPath(Left(url))
+  def apply(url: URL): UrlOrPath = {
+    val sanitizedUrl = new URL(url.getProtocol, url.getHost, url.getPort, url.getPath.replace("//", "/"))
+    new UrlOrPath(Left(sanitizedUrl))
+  }
+
   def apply(path: String): UrlOrPath = new UrlOrPath(Right(URLPath(path)))
 }
 
