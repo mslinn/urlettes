@@ -21,10 +21,10 @@ package object playTypes extends PlayTypeJsonFormats {
       new URL(value.getProtocol, value.getHost, value.getPort, prefixSlash(value.getPath.trim) + appendedPath)
 
     def exists: Boolean = try {
-      io.Source.fromURL(value)
+      scala.io.Source.fromURL(value)
       true
     } catch {
-      case e: Exception =>
+      case _: Exception =>
         false
     }
 
@@ -59,7 +59,7 @@ package object playTypes extends PlayTypeJsonFormats {
       try {
         Some(RichURL(new URL(string)))
       } catch {
-        case e: Exception => None
+        case _: Exception => None
       }
   }
 }
