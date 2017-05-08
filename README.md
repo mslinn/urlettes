@@ -19,7 +19,7 @@ Add two lines to `build.sbt`.
 
  * Add the `urlettes` dependency:
 ````
-"com.micronautics" %% "urlettes" % "0.1.5" withSources()
+"com.micronautics" %% "urlettes" % "0.1.6" withSources()
 ````
 
  * Add this to the `resolvers`:
@@ -27,7 +27,7 @@ Add two lines to `build.sbt`.
 "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
 ````
 
-This library has been built against Scala 2.11.8 / Play 2.5.12 and Scala 2.12.1 / Play 2.6.0-M1.
+This library has been built against Scala 2.11.8 / Play 2.5.12 and Scala 2.12.2 / Play 2.6.0-M5.
 
 ## Thanks To
 

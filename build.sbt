@@ -6,10 +6,10 @@ name := "urlettes"
 
 organization := "com.micronautics"
 
-version := "0.1.5"
+version := "0.1.6"
 
-scalaVersion := "2.12.1"
-crossScalaVersions := Seq("2.11.8", "2.12.1")
+scalaVersion := "2.11.8"
+crossScalaVersions := Seq("2.11.8", "2.12.2")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -53,7 +53,7 @@ libraryDependencies ++= Seq(
 
 libraryDependencies ++= scalaVersion {
   case sv if sv.startsWith("2.12") => // Builds with Scala 2.12.x and Play 2.6.x
-    val playVer = "2.6.0-M1"
+    val playVer = "2.6.0-M5"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
       "com.typesafe.play"      %% "play-json"          % playVer % Provided,
@@ -105,3 +105,12 @@ bintrayRepository := "play"
 bintrayPackageLabels := Seq("play")
 
 publishArtifact in Test := false
+
+// sbt-site settings
+enablePlugins(SiteScaladocPlugin)
+siteSourceDirectory := target.value / "api"
+publishSite
+
+// sbt-ghpages settings
+enablePlugins(GhpagesPlugin)
+git.remoteRepo := "git@github.com:mslinn/urlettes.git"
