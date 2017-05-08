@@ -29,6 +29,9 @@ Add two lines to `build.sbt`.
 
 This library has been built against Scala 2.11.8 / Play 2.5.12 and Scala 2.12.2 / Play 2.6.0-M5.
 
+## Scaladoc
+[Here](http://mslinn.github.io/urlettes/latest/api/)
+
 ## Thanks To
 
 This project is sponsored by [Micronautics Research Corporation](http://www.micronauticsresearch.com/),
