@@ -1,3 +1,14 @@
+/* Copyright 2012-2016 Micronautics Research Corporation.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
+ * the License. You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software distributed under the License is distributed on
+ * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
+ * specific language governing permissions and limitations under the License. */
+
 import sbt.Keys._
 
 licenses += ("MIT", url("https://opensource.org/licenses/Apache-2.0"))
@@ -8,8 +19,8 @@ organization := "com.micronautics"
 
 version := "0.1.6"
 
-scalaVersion := "2.11.8"
-crossScalaVersions := Seq("2.11.8", "2.12.2")
+scalaVersion := "2.11.11"
+crossScalaVersions := Seq(scalaVersion.value, "2.12.2")
 
 scalacOptions ++= Seq(
   "-deprecation",
@@ -29,7 +40,7 @@ scalacOptions ++= Seq(
 scalacOptions in (Compile, doc) ++= baseDirectory.map {
   (bd: File) => Seq[String](
      "-sourcepath", bd.getAbsolutePath,
-     "-doc-source-url", "https://github.com/mslinn/urlettes/tree/master€{FILE_PATH}.scala"
+     "-doc-source-url", "https://github.com/mslinn/{name.value}/tree/master€{FILE_PATH}.scala"
   )
 }.value
 
@@ -99,18 +110,3 @@ initialCommands in console := """
                                 |""".stripMargin
 
 cancelable := true
-
-bintrayOrganization := Some("micronautics")
-bintrayRepository := "play"
-bintrayPackageLabels := Seq("play")
-
-publishArtifact in Test := false
-
-// sbt-site settings
-enablePlugins(SiteScaladocPlugin)
-siteSourceDirectory := target.value / "api"
-publishSite
-
-// sbt-ghpages settings
-enablePlugins(GhpagesPlugin)
-git.remoteRepo := "git@github.com:mslinn/urlettes.git"
