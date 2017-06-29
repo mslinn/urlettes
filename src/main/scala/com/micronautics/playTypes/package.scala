@@ -14,7 +14,7 @@ package com.micronautics
 import java.net.URL
 
 package object playTypes extends PlayTypeJsonFormats {
-  implicit class RichURL(val value: URL) extends AnyVal with slick.lifted.MappedTo[URL] {
+  implicit class RichURL(val value: URL) extends AnyVal {
     @inline private def prefixSlash(value: String) = if (value.startsWith("/")) value else "/" + value
 
     def appendPath(appendedPath: String): URL =

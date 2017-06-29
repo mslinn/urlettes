@@ -17,7 +17,7 @@ name := "urlettes"
 
 organization := "com.micronautics"
 
-version := "0.1.6"
+version := "0.1.7"
 
 scalaVersion := "2.11.11"
 crossScalaVersions := Seq(scalaVersion.value, "2.12.2")
@@ -59,12 +59,13 @@ resolvers ++= Seq(
 
 libraryDependencies ++= Seq(
   "com.github.nscala-time" %% "nscala-time" % "2.16.0" withSources(),
+  //
   "junit"                  %  "junit"       % "4.12"   % Test
 )
 
 libraryDependencies ++= scalaVersion {
   case sv if sv.startsWith("2.12") => // Builds with Scala 2.12.x and Play 2.6.x
-    val playVer = "2.6.0-M5"
+    val playVer = "2.6.0"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
       "com.typesafe.play"      %% "play-json"          % playVer % Provided,
@@ -79,19 +80,17 @@ libraryDependencies ++= scalaVersion {
     )
 
   case sv if sv.startsWith("2.11") => // Builds with Scala 2.11.x and Play 2.5.x
-    val playVer = "2.5.12"
+    val playVer = "2.5.15"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
       "com.typesafe.play"      %% "play-json"          % playVer % Provided,
       "com.typesafe.play"      %% "play-iteratees"     % playVer withSources() force(),
       "com.typesafe.play"      %% "play-datacommons"   % playVer withSources() force(),
-      "com.typesafe.slick"     %% "slick"              % "3.1.1" % Provided,
       "org.clapper"            %% "grizzled-scala"     % "1.3"   withSources(),
       //
       "com.typesafe.play"      %% "play"               % playVer % Test withSources(),
       "com.typesafe.play"      %% "play-json"          % playVer % Test withSources(),
       "com.typesafe.play"      %% "play-ws"            % playVer % Test withSources(),
-      "com.typesafe.slick"     %% "slick"              % "3.1.1" % Test withSources(),
       "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test withSources()
     )
 }.value

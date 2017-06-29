@@ -9,7 +9,6 @@ Included:
 * Types: `RichURL`, `URLPath` and `UrlOrPath`
 * Implicit form mappers: `url`, `urlPath`
 * JSON type mappers: for `URL`, `URLPath` and `UrlOrPath`
-* Slick type mappers for `URL` and `URLPath`
 
 [Here is why you should care about strong typing.](http://pchiusano.github.io/2016-09-15/static-vs-dynamic.html)
 
@@ -19,7 +18,7 @@ Add two lines to `build.sbt`.
 
  * Add the `urlettes` dependency:
 ````
-"com.micronautics" %% "urlettes" % "0.1.6" withSources()
+"com.micronautics" %% "urlettes" % "0.1.7" withSources()
 ````
 
  * Add this to the `resolvers`:
@@ -27,7 +26,7 @@ Add two lines to `build.sbt`.
 "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
 ````
 
-This library has been built against Scala 2.11.8 / Play 2.5.12 and Scala 2.12.2 / Play 2.6.0-M5.
+This library has been built against Scala 2.11.11 / Play 2.5.15 and Scala 2.12.2 / Play 2.6.0.
 
 ## Scaladoc
 [Here](http://mslinn.github.io/urlettes/latest/api/)

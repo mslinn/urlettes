@@ -12,7 +12,6 @@
 package com.micronautics.playTypes
 
 import java.net.URL
-import slick.lifted.MappedTo
 
 object URLPath {
   import play.api.libs.json._
@@ -24,7 +23,7 @@ object URLPath {
 
 /** Path portion of a URL; valid values either start with a forward slash or are empty.
   * You could consider this as just enough of a URL to support links within the webapp. */
-case class URLPath(value: String) extends AnyVal with MappedTo[String] {
+case class URLPath(value: String) extends AnyVal {
   def isAbsolute: Boolean = value.startsWith("/")
 
   def isEmpty: Boolean = value.isEmpty
