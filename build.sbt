@@ -20,7 +20,7 @@ organization := "com.micronautics"
 version := "0.1.7"
 
 scalaVersion := "2.11.11"
-crossScalaVersions := Seq(scalaVersion.value, "2.12.2")
+crossScalaVersions := Seq(scalaVersion.value, "2.12.3")
 
 scalacOptions ++= Seq(
   "-deprecation",
