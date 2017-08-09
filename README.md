@@ -1,5 +1,6 @@
 # URLEttes
 
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![Build Status](https://travis-ci.org/mslinn/urlettes.svg?branch=master)](https://travis-ci.org/mslinn/urlettes)
 [ ![Download](https://api.bintray.com/packages/micronautics/play/urlettes/images/download.svg) ](https://bintray.com/micronautics/play/urlettes/_latestVersion)
 
