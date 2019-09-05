@@ -109,3 +109,6 @@ initialCommands in console := """
                                 |""".stripMargin
 
 cancelable := true
+
+ThisBuild / turbo := true
+
