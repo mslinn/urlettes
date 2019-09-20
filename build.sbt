@@ -53,8 +53,8 @@ javacOptions ++= Seq(
 )
 
 resolvers ++= Seq(
-  "Lightbend Releases" at "http://repo.typesafe.com/typesafe/releases",
-  "micronautics/play on bintray" at "http://dl.bintray.com/micronautics/play"
+  "Lightbend Releases" at "https://repo.typesafe.com/typesafe/releases",
+  "micronautics/play on bintray" at "https://dl.bintray.com/micronautics/play"
 )
 
 libraryDependencies ++= Seq(
