@@ -39,13 +39,13 @@ libraryDependencies ++= scalaVersion {
       "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0"    % Test withSources()
     )
 
-  case sv if sv.startsWith("2.12") => // Builds with Scala 2.12.x and Play 2.6.x
-    val playVer = "2.6.2"
+  case sv if sv.startsWith("2.12") => // Builds with Scala 2.12.x and Play 2.8.x
+    val playVer = "2.8.0"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
       //
-      "com.typesafe.play"      %% "play"               % playVer    % Test withSources(),
-      "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M2" % Test withSources()
+      "com.typesafe.play"      %% "play"               % playVer % Test withSources(),
+      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0" % Test withSources()
     )
 
   case sv if sv.startsWith("2.11") => // Builds with Scala 2.11.x and Play 2.5.x
@@ -94,6 +94,8 @@ scalacOptions in (Compile, doc) ++= baseDirectory.map {
 }.value
 
 scalaVersion := "2.13.1"
+
+//triggeredMessage in ThisBuild := Watch.clearScreenOnTrigger
 
 ThisBuild / turbo := true
 
