@@ -1,4 +1,4 @@
-/* Copyright 2012-2016 Micronautics Research Corporation.
+/* Copyright 2012-2019 Micronautics Research Corporation.
  *
  * Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance with
  * the License. You may obtain a copy of the License at
@@ -9,40 +9,13 @@
  * an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License for the
  * specific language governing permissions and limitations under the License. */
 
-import sbt.Keys._
+cancelable := true
 
-licenses += ("MIT", url("https://opensource.org/licenses/Apache-2.0"))
+crossScalaVersions := Seq("2.11.12", "2.12.10", "2.13.1")
 
-name := "urlettes"
-
-organization := "com.micronautics"
-
-version := "0.1.7"
-
-scalaVersion := "2.11.12"
-crossScalaVersions := Seq("2.11.12", "2.12.10")
-
-scalacOptions ++= Seq(
-  "-deprecation",
-  "-encoding", "UTF-8",
-  "-feature",
-  "-target:jvm-1.8",
-  "-unchecked",
-  "-Ywarn-adapted-args",
-  "-Ywarn-dead-code",
-  "-Ywarn-numeric-widen",
-  "-Ywarn-unused",
-  "-Ywarn-value-discard",
-  "-Xfuture",
-  "-Xlint"
-)
-
-scalacOptions in (Compile, doc) ++= baseDirectory.map {
-  (bd: File) => Seq[String](
-     "-sourcepath", bd.getAbsolutePath,
-     "-doc-source-url", "https://github.com/mslinn/urlettes/tree/master€{FILE_PATH}.scala"
-  )
-}.value
+// define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
+initialCommands in console := """
+                                |""".stripMargin
 
 javacOptions ++= Seq(
   "-Xlint:deprecation",
@@ -52,30 +25,26 @@ javacOptions ++= Seq(
   "-g:vars"
 )
 
-resolvers ++= Seq(
-  "Lightbend Releases" at "https://repo.typesafe.com/typesafe/releases",
-  "micronautics/play on bintray" at "https://dl.bintray.com/micronautics/play"
-)
-
 libraryDependencies ++= Seq(
-  "com.github.nscala-time" %% "nscala-time" % "2.16.0" withSources(),
-  //
-  "junit"                  %  "junit"       % "4.12"   % Test
+  "junit" %  "junit" % "4.12"   % Test
 )
 
 libraryDependencies ++= scalaVersion {
+  case sv if sv.startsWith("2.13") => // Builds with Scala 2.13.x and Play 2.8.x
+    val playVer = "2.8.0"
+    Seq(
+      "com.typesafe.play"      %% "play"               % playVer % Provided,
+      //
+      "com.typesafe.play"      %% "play"               % playVer    % Test withSources(),
+      "org.scalatestplus.play" %% "scalatestplus-play" % "5.0.0"    % Test withSources()
+    )
+
   case sv if sv.startsWith("2.12") => // Builds with Scala 2.12.x and Play 2.6.x
     val playVer = "2.6.2"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
-      "com.typesafe.play"      %% "play-json"          % playVer % Provided,
-      "org.clapper"            %% "grizzled-scala"     % "4.2.0" withSources(),
-      "com.typesafe.slick"     %% "slick"              % "3.2.0" % Provided,
       //
       "com.typesafe.play"      %% "play"               % playVer    % Test withSources(),
-      "com.typesafe.play"      %% "play-json"          % playVer    % Test withSources(),
-      "com.typesafe.play"      %% "play-ws"            % playVer    % Test withSources(),
-      "com.typesafe.slick"     %% "slick"              % "3.2.0"    % Test withSources(),
       "org.scalatestplus.play" %% "scalatestplus-play" % "2.0.0-M2" % Test withSources()
     )
 
@@ -83,17 +52,13 @@ libraryDependencies ++= scalaVersion {
     val playVer = "2.5.16"
     Seq(
       "com.typesafe.play"      %% "play"               % playVer % Provided,
-      "com.typesafe.play"      %% "play-json"          % playVer % Provided,
-      "com.typesafe.play"      %% "play-iteratees"     % playVer withSources() force(),
-      "com.typesafe.play"      %% "play-datacommons"   % playVer withSources() force(),
-      "org.clapper"            %% "grizzled-scala"     % "1.3"   withSources(),
       //
       "com.typesafe.play"      %% "play"               % playVer % Test withSources(),
-      "com.typesafe.play"      %% "play-json"          % playVer % Test withSources(),
-      "com.typesafe.play"      %% "play-ws"            % playVer % Test withSources(),
       "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test withSources()
     )
 }.value
+
+licenses += ("MIT", url("https://opensource.org/licenses/Apache-2.0"))
 
 logLevel := Level.Warn
 
@@ -104,11 +69,32 @@ logLevel in compile := Level.Warn
 // Level.INFO is needed to see detailed output when running tests
 logLevel in test := Level.Info
 
-// define the statements initially evaluated when entering 'console', 'console-quick', but not 'console-project'
-initialCommands in console := """
-                                |""".stripMargin
+name := "urlettes"
 
-cancelable := true
+organization := "com.micronautics"
+
+resolvers ++= Seq(
+  "Lightbend Releases" at "https://repo.typesafe.com/typesafe/releases",
+  "micronautics/play on bintray" at "https://dl.bintray.com/micronautics/play"
+)
+
+scalacOptions ++= Seq(
+  "-deprecation",
+  "-encoding", "UTF-8",
+  "-feature",
+  "-target:jvm-1.8",
+  "-unchecked"
+)
+
+scalacOptions in (Compile, doc) ++= baseDirectory.map {
+  (bd: File) => Seq[String](
+     "-sourcepath", bd.getAbsolutePath,
+     "-doc-source-url", "https://github.com/mslinn/urlettes/tree/master€{FILE_PATH}.scala"
+  )
+}.value
+
+scalaVersion := "2.13.1"
 
 ThisBuild / turbo := true
 
+version := "0.1.8"
