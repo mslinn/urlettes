@@ -54,7 +54,7 @@ libraryDependencies ++= scalaVersion {
       "com.typesafe.play"      %% "play"               % playVer % Provided,
       //
       "com.typesafe.play"      %% "play"               % playVer % Test withSources(),
-      "org.scalatestplus.play" %% "scalatestplus-play" % "1.5.1" % Test withSources()
+      "org.scalatestplus.play" %% "scalatestplus-play" % "4.0.3" % Test withSources()
     )
 }.value
 
